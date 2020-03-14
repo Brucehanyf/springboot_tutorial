@@ -8,11 +8,10 @@
         <version>1.0-SNAPSHOT</version>
         <relativePath/>
     </parent>
-    <artifactId>multity</artifactId>
+    <artifactId>thymeleaf</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>multity-data-source</name>
-    <description>multity-data-source project for Spring Boot</description>
-
+    <name>thymeleaf</name>
+    <description>Thymeleaf Demo project for Spring Boot</description>
     <build>
         <plugins>
             <plugin>
@@ -21,4 +20,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>
