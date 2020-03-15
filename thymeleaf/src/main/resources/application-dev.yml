@@ -8,7 +8,7 @@ spring:
     url: jdbc:mysql://localhost:3306/springboot?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
   thymeleaf:
-    cache: false
+    cache: false #主要是这里，设置默认不缓存页面
     check-template-location: 'true '
     servlet:
       content-type: 'text/html'
@@ -16,6 +16,8 @@ spring:
     mode: 'HTML'
     prefix: 'classpath:/templates/'
     suffix: '.html'
+  mvc:
+    static-path-pattern: /static/** # 添加静态文件过滤
 mybatis:
   mapper-locations: classpath:mapper/*Mapper.xml
   type-aliases-package: com.suancai.thymeleaf.pojo

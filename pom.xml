@@ -9,6 +9,11 @@
   <version>1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>springboot-parent</name>
+  <!--  新模块要指定子模块-->
+  <modules>
+        <module>multity</module>
+        <module>thymeleaf</module>
+    </modules>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>

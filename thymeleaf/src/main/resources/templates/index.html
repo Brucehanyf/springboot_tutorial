@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+</head>
+<body>
+<script th:src="@{/static/scripts/jquery-3.2.1.js}"></script>
+<div>
+    <h1>这里是首页</h1>
+    <th:block th:if="${session.user!=null}">
+        <h2 你好, th:text="${session.user.userName}" ></h2>
+        <h2 密码, th:text="${session.user.password}"> </h2>
+    </th:block>
+    <th:block th:if="${session.user==null}">
+        <div><a href="/login"> 请登录</a></div>
+    </th:block>
+</div>
+</body>
+</html>

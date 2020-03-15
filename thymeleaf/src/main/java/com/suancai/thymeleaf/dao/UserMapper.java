@@ -2,12 +2,19 @@ package com.suancai.thymeleaf.dao;
 
 
 import com.suancai.thymeleaf.pojo.User;
+import org.springframework.stereotype.Repository;
 
-/**
- * @Author Bruce
- * @Date: 2019/11/16 11:55
- * @Description
- */
+@Repository
 public interface UserMapper {
-    User getUserByName(String name);
+    int deleteByPrimaryKey(Long userId);
+
+    int insert(User record);
+
+    int insertSelective(User record);
+
+    User selectByPrimaryKey(Long userId);
+
+    int updateByPrimaryKeySelective(User record);
+
+    int updateByPrimaryKey(User record);
 }
