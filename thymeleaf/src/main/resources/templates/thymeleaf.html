@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Thymeleaf Demo</title>
+</head>
+<body>
+<script th:src="@{/static/scripts/jquery-3.2.1.js}"></script>
+<h1>Thymeleaf 基础语法</h1>
+<div>
+    <div>
+        <!--/*@thymesVar id="html" type="java.lang.String"*/-->
+        <h3>文本标签 th:text 输出文本 /th:utext 原样输出</h3>
+        <p th:text="${html}"></p>
+        <p th:utext="${html}"></p>
+    </div>
+    <div>
+        <h3>使用 + 或者|进行拼接</h3>
+        <!--/*@thymesVar id="user" type="com.suancai.thymeleaf.dto.UserDto"*/-->
+        <p th:text="${user.userName}+${user.password}"></p>
+        <p th:text="|${user.userName} ${user.password} ${user.varifyCode}|"></p>
+        <!--/*@thymesVar id="flag" type="java.lang.Boolean"*/-->
+        <p th:text="${flag}"></p>
+    </div>
+    <div>
+        <h3>一般和 th:href、th:src进行结合使用，用于显示Web 应用中的URL链接。
+            通过@{...}表达式Thymeleaf 拼接web应用访问的全路径，通过（）进行参数的拼接</h3>
+        <img th:hr="@{/static/image/ico.png}">
+        <!--/*@thymesVar id="user" type="com.suancai.thymeleaf.dto.UserDto"*/-->
+        <a  th:href="@{/product/comments(userName=${user.userName},password=${user.password})}" >查看</a>
+    </div>
+    <div>
+        <h3>条件判断 th:if 当条件为true的时候显示 /th:unless 当条件为fasle的时候显示 </h3>
+        <!--/*@thymesVar id="flag" type="java.lang.Boolean"*/-->
+        <p th:if="${flag}">th:if 当条件为true的时候显示<p>
+        <p th:unless="!${flag}">th:unless 当条件为fasle的时候显示</p>
+    </div>
+
+    <!--/*@thymesVar id="user" type="com.suancai.thymeleaf.dto.UserDto"*/-->
+    <div th:switch="${user.userName}">
+        <h3> th:switch 用法 </h3>
+        <p th:case="Bruce">This is Bruce</p>
+        <p th:case="Alice">This is Alice</p>
+    </div>
+
+    <div>
+        <h3>th:each 循环遍历</h3>
+        <p>
+            我们可以通过便利的变量名+Stat 来获取索引 是否是第一个或最后一个等。
+            便利的变量名+Stat称作状态变量，其属性有：
+            index:当前迭代对象的迭代索引，从0开始，这是索引属性；
+            count:当前迭代对象的迭代索引，从1开始，这个是统计属性；
+            size:迭代变量元素的总量，这是被迭代对象的大小属性；
+            current:当前迭代变量；
+            even/odd:布尔值，当前循环是否是偶数/奇数（从0开始计算）；
+            first:布尔值，当前循环是否是第一个；
+            last:布尔值，当前循环是否是最后一个
+        </p>
+        <table>
+            <thead><th>用户名</th><th>密码</th><th>验证码</th></thead>
+            <!--/*@thymesVar id="list" type="com.suancai.thymeleaf.dto.UserDto"*/-->
+            <tbody th:each="user : ${list}">
+            <td th:text="${user.userName}"></td>
+            <td th:text="${user.password}"></td>
+            <td th:object="${user.varifyCode}"></td>
+            </tbody>
+        </table>
+    </div>
+    <div>
+
+    </div>
+</div>
+</body>
+</html>
