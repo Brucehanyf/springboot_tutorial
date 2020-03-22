@@ -1,6 +1,9 @@
 package com.suancai.thymeleaf.controller;
 
+import com.suancai.thymeleaf.common.CommonResponse;
 import com.suancai.thymeleaf.dto.UserDto;
+import jdk.nashorn.internal.runtime.logging.Logger;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -37,5 +40,38 @@ public class AdminController {
         log.info(user.getUserName() + ":" + user.getPassword());
         session.setAttribute("user", user);
         return "redirect:index";
+    }
+
+    /**
+     * 注册页面
+     * @return
+     */
+    @GetMapping("/register")
+    public String register(){
+        return "admin/register";
+    }
+
+    /**
+     * 注册用户
+     * @param userDto
+     * @return
+     */
+    @PostMapping("/register")
+    @ResponseBody
+    public CommonResponse register(UserDto userDto){
+        return CommonResponse.ok();
+    }
+
+    /**
+     * 退出登录
+     * @param userName
+     * @param session
+     * @return
+     */
+    @PostMapping("/logout")
+    public String logout(String userName, HttpSession session) {
+        log.info(userName + "logout...");
+        session.removeAttribute("user");
+        return "redirect:logint";
     }
 }

@@ -2,35 +2,72 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-<!--    <link rel="stylesheet" type="text/css" th:href="@{css/ws.css}"/>-->
-
+    <title>登录页</title>
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script th:src="@{/static/scripts/jquery-3.2.1.js}"></script>
+    <!-- 最新的 Bootstrap4 核心 js文件 -->
+    <script th:src="@{/static/bootstrap/js/bootstrap.min.js}"></script>
+    <link th:href="@{/static/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
     <title>登录页</title>
 </head>
 <body>
-<script th:src="@{/static/scripts/jquery-3.2.1.js}"></script>
-<div> <h1>登录</h1></div>
-<form id="form" onsubmit="return false;" action="##">
-    <p><input type="text" name="userName" placeholder="用户名"></p>
-    <p><input type="password" name="password" placeholder="密码"></p>
-<p><input type="submit" value="提交" id="submit"><input type="reset" value="重置"></p>
-</form>
+<div class="container text-center">
+    <div class="row">
+        <form id="form" class="form-signin" onsubmit="return false;" action="##">
+            <div class="mb-5">
+                <img class="mb-4" th:src="@{/static/image/favicon.ico}" alt="" width="72" height="72">
+                <h1 class="h3 mb-3 font-weight-normal">登录</h1>
+            </div>
+            <div class="form-group">
+                <lable for="user" class="text-center font-center" style="display:inline"></lable>
+                <input type="text" style="display: inline; width: 100%" class="form-control" id="userName" placeholder="用户名">
+            </div>
+
+            <div class="form-group">
+                <lable for="password" class="text-center font-center" style="display:inline;"></lable>
+                <input type="password" style="display: inline; width: 100%" class="form-control" id="password" placeholder="密码">
+            </div>
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" value="remember-me">记住密码
+                </label>
+            </div>
+            <button type="submit" class="btn btn-lg btn-primary btn-block" onclick="login()">登录</button>
+            <p class="mt-5 mb-3 text-muted">© 2017-2020</p>
+<!--                <button type="submit" class="btn btn-primary" onclick="register()">注册</button>-->
+        </form>
+    </div>
+</div>
 </body>
 <script>
-    $('#submit').click(function() {
-        var serialize = $("#form").serialize();
-        console.log(serialize);
+    function login() {
         $.ajax({
                 type: 'POST',
                 url: '/login',
-                data:$("#form").serialize(),
-                success:function (data) {
+                data: {"userName": $("#userName").val(), "password": $("#password").val()},
+                success: function (data) {
+                    console.log(data);
                     window.location.href = '/index';
                 },
-                error:function (data) {
+                error: function (data) {
                     console.log(data);
                 }
             }
         )
-    });
+    }
+
+    function register() {
+        // window.location.heaf = "/register"
+        window.open("/register", "_blank");
+    }
 </script>
+
+<style>
+    .form-signin {
+        width: 100%;
+        max-width: 420px;
+        padding: 15px;
+        margin: auto;
+    }
+</style>
 </html>

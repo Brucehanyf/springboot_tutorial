@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>注册页面</title>
+    <title>登录页</title>
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script th:src="@{/static/scripts/jquery-3.2.1.js}"></script>
+    <!-- 最新的 Bootstrap4 核心 js文件 -->
+    <script th:src="@{/static/bootstrap/js/bootstrap.min.js}"></script>
+    <link th:href="@{/static/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <style>
+        /*
+ * 表单总体布局
+ */
+        /*#form-container {*/
+        /*    margin-top: 100px;*/
+        /*    border-radius: 20px;*/
+        /*    border-style: groove;*/
+        /*    border-width: 5px;*/
+        /*    border-color: #fff6fc;*/
+        /*}*/
+
+        /*
+         * 标签
+         */
+        label {
+            font-family: "微软雅黑";
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+<!--<form style="margin-left: 500px;margin-top: 200px;margin-right: 500px;">
+    <div class="text-lg-left">注册</div>
+    <div class="form-group">
+        <lable for="userName" class="text-left" style="display:inline">用户名：</lable>
+        <input type="text" style="display: inline; width: 200px" class="form-control" id="userName">
+    </div>
+    <div class="form-group">
+        <label for="password" class="text-left" stype="display:inline">密码：</label>
+        <input type="text" style="display: inline; width: 200px"  class="form-control" id="password">
+    </div>
+    <button type="submit" class="btn btn-primary">确认注册</button>
+    <button type="reset" class="btn btn-primary">重置</button>
+</form>-->
+
+<div class="text-center container">
+    <div class="" id="form-container">
+        <h1 class="text-center">
+            用 户 注 册
+        </h1>
+        <form action="register" class="form-signin" method="post" οnsubmit="return checkRegister()" role="form">
+            <div class="form-group">
+                <label for="name">
+                    <!--                    联 系 人 :-->
+                </label>
+                <div class="one-line">
+                    <input class="form-control" id="name" name="name" οnblur="checkName()" required="true" type="text"
+                           placeholder="用户名"/>
+                    <p id="nameError" style="margin-bottom: -2px;color: red;">
+                    </p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="one-line" for="telephone">
+<!--                    手 机 号 :-->
+                </label>
+                <div class="one-line">
+                    <input class="form-control" id="telephone" name="telephone" οnblur="checkPhone()" required="true"
+                           type="text" placeholder="手机号"/>
+                    <p id="telephoneError" style="margin-bottom: -2px;color: red;">
+                    </p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">
+<!--                    密      码 :-->
+                </label>
+                <div class="one-line">
+                    <input class="form-control" id="password" name="password" οnblur="checkPassword()" required="true"
+                           type="password" placeholder="密码"/>
+                    <p id="passwordError" style="margin-bottom: -2px;color: red;">
+                    </p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="rePassword">
+<!--                    重复密码:-->
+                </label>
+                <div class="one-line">
+                    <input class="form-control" id="rePassword" name="rePassword" οnblur="checkrePassword()"
+                           required="true" type="password" placeholder="重复密码"/>
+                    <p id="rePasswordError" style="margin-bottom: -2px;color: red;">
+                    </p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">
+<!--                    邮      箱 :-->
+                </label>
+                <div class="one-line">
+                    <input class="form-control" id="email" name="email" οnblur="checkEmail()" required="true"
+                           type="text" placeholder="邮箱"/>
+                    <p id="emailError" style="margin-bottom: -2px;color: red;">
+                    </p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="qq">
+<!--                    Q       Q :-->
+                </label>
+                <div class="one-line">
+                    <input class="form-control" id="qq" name="qq" οnblur="checkQQ()" required="true" type="text"
+                    placeholder="QQ"/>
+                    <p id="qqError" style="margin-bottom: -2px;color: red;">
+                    </p>
+                </div>
+            </div>
+            <div style="float: left; width: 50%">
+                <input class="btn btn-primary" type="submit" value="提交注册"/>
+            </div>
+            <div style="float: left; width: 50%">
+                <a class="btn btn-primary" href="login.html">
+                    已有账号
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+<style>
+    .form-signin {
+        width: 100%;
+        max-width: 420px;
+        padding: 15px;
+        margin: auto;
+    }
+</style>
+</html>

@@ -37,3 +37,32 @@
         };
     })(jQuery);
     </code>
+# 四、 表单提交处理验证处理方式
+<code>
+<form id="form" onsubmit="return false;" action="##">
+    <p><input type="text" name="userName" placeholder="用户名"></p>
+    <p><input type="password" name="password" placeholder="密码"></p>
+<p><input type="submit" value="提交" id="submit"><input type="reset" value="重置"></p>
+</form>
+
+ $('#submit').click(function() {
+        var serialize = $("#form").serialize();
+        console.log(serialize);
+        $.ajax({
+                type: 'POST',
+                url: '/login',
+                data:$("#form").serialize(),
+                success:function (data) {
+                    debugger;
+                    console.log(data);
+                    window.location.href = '/index';
+                },
+                error:function (data) {
+                    console.log(data);
+                }
+            }
+        )
+    });
+</code>    
+    
+    

@@ -6,7 +6,6 @@
         <groupId>com.suancai</groupId>
         <artifactId>parent</artifactId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath/>
     </parent>
     <artifactId>multity</artifactId>
     <version>0.0.1-SNAPSHOT</version>
